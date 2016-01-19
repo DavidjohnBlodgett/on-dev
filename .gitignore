@@ -1,0 +1,7 @@
+build/.vagrant
+build/config/monorail_rack.cfg
+build/bin/pxe*
+*.vdi
+*.iso
+*.box
+packer_cashe
