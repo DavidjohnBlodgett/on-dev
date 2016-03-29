@@ -13,6 +13,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
             v.memory = 4096
             v.cpus = 4
             v.customize ["modifyvm", :id, "--nicpromisc2", "allow-all"]
+		target.vm.synced_folder "../", "/home/vagrant/src"
         end
 
         # Create a public network, which generally matched to bridged network.
@@ -32,6 +33,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
           service isc-dhcp-server start
           service rsyslog stop
           echo manual | sudo tee /etc/init/rsyslog.override
+		  sudo apt-get -y install python-software-properties
+          sudo apt-add-repository ppa:ansible/ansible
+          sudo apt-get -y update
+          sudo apt-get -y install ansible
         SHELL
 
     end
