@@ -1,5 +1,11 @@
 ## DOCUMENTATION
 
+
+Please note, this file is a WIP (should be ignored)... most of this doc is just cut & paste from the 
+RackHD project, I will likely clean this up once finished... 
+
+
+
 The monorail_rack setup script is an easy "one button push" script to deploy
 a 'virtual rack' using virtualbox. This emulates a RackHD server and some number
 of virtual servers - using virtualbox PXE-booting VMs. Private virtual networks
