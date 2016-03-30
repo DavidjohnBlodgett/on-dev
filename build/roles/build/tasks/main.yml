@@ -1,0 +1,7 @@
+---
+- name: Install Build Tools
+  apt: pkg={{ item }} state=installed
+  with_items:
+    - build-essential
+    - genisoimage
+  sudo: yes

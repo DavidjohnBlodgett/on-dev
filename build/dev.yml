@@ -3,16 +3,26 @@
   hosts: all
   sudo: no
   roles:
-    - apt
-    - build
-    - git
-    - rabbitmq
-    - mongodb
-    - node
-    - isc-dhcp-server
-    - monorail
-    - snmptool
-    - ipmitool
-    - foreman
-    - repos
-    - images
+    - tree
+    
+    # below are just a ref for what is done in packer...
+    #- apt
+    #- build
+    #- git
+    #- rabbitmq
+    #- mongodb
+    #- node-legacy
+    #- isc-dhcp-server
+    #- monorail
+    #- snmptool
+    #- ipmitool
+    #- foreman
+    #- remoterepos
+    #- images
+    #- swagger
+    #- integrationtest
+  #vars:
+# branch of https://github.com/rackhd/rackhd to be used
+   # - branch: "master"
+# version of Node.js to use
+    #- node_version: "0.10.41"

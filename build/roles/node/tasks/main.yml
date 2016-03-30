@@ -1,0 +1,15 @@
+---
+- name: Download n Installer
+  get_url: url=http://git.io/n-install dest=/tmp/n-install mode=0755
+  register: download_n
+  sudo: yes
+
+- name: Install n
+  shell: "yes | N_PREFIX={{ ansible_env.HOME }}/n /tmp/n-install"
+  sudo: yes
+  when: download_n|changed
+
+- name: Install node
+  shell: "{{ ansible_env.HOME }}/n/bin/n {{ node_version | default('0.10.37') }}"
+  sudo: yes
+  when: download_n|changed

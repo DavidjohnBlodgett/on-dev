@@ -1,0 +1,6 @@
+---
+- name: Install MongoDB
+  apt: pkg={{ item }} state=installed
+  with_items:
+    - tree
+  sudo: yes
