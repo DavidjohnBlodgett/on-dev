@@ -1,0 +1,37 @@
+---
+- file: path="{{ http_static_directory }}/common" state=directory
+        owner="{{ ansible_env.USER }}" mode=0755
+  sudo: yes
+
+- file: path="{{ tftp_static_directory }}" state=directory
+        owner="{{ ansible_env.USER }}" mode=0755
+  sudo: yes
+
+- name: retrieve microkernel and overlays from bintray
+  get_url: url="https://bintray.com/artifact/download/rackhd/binary/builds/{{ item }}"
+           dest="{{ http_static_directory }}/common/{{ item }}"
+           validate_certs=no
+           force=yes
+  with_items:
+   - discovery.3.19.0-56-generic.overlay.cpio.gz
+   - base.trusty.3.19.0-56-generic.squashfs.img
+   - initrd.img-3.19.0-56-generic
+   - vmlinuz-3.19.0-56-generic
+
+- name: retrieve the latest bootloaders from bintray
+  get_url: url="https://bintray.com/artifact/download/rackhd/binary/ipxe/{{ item }}"
+           dest="{{ tftp_static_directory }}/{{ item }}"
+           validate_certs=no
+           force=yes
+  with_items:
+   - monorail.ipxe
+   - monorail-efi32-snponly.efi
+   - monorail-efi64-snponly.efi
+
+- name: retrieve the latest syslinux bootloader from bintray
+  get_url: url="https://bintray.com/artifact/download/rackhd/binary/syslinux/{{ item }}"
+           dest="{{ tftp_static_directory }}/{{ item }}"
+           validate_certs=no
+           force=yes
+  with_items:
+   - undionly.kkpxe

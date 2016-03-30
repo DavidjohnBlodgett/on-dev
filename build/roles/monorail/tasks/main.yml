@@ -1,0 +1,8 @@
+---
+- name: Create directory for monorail config file
+  file: path=/opt/monorail/ state=directory mode=0777
+  sudo: yes
+
+- name: Load monorail conf onto guest
+  copy: src=config.json dest=/opt/monorail/config.json
+  sudo: yes
