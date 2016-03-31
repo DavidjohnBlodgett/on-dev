@@ -65,7 +65,7 @@ The goal of this section is to provide a clear basic explination of each step ne
 
 1.git fork each repository to your Github account.
 
-- login to Github and click fork within each repository listed below
+ - login to Github and click fork within each repository listed below
 
     https://github.com/RackHD
 
@@ -83,10 +83,10 @@ The goal of this section is to provide a clear basic explination of each step ne
 
 2.git clone each repository from your forks.
 
-- login to Github and copy the HTTPS URL from each of the repositories you have just forked, example paths below.
-- From the on-dev directory, for each repositories URL execute the following command
+ - login to Github and copy the HTTPS URL from each of the repositories you have just forked, example URLs below.
+ - From the on-dev directory, for each repository URL execute the following command
 
-```
+ ```
     /<pathToYourWorkSpace>/on-dev/$ git clone <URLtoYourFork> 
 ```
 
