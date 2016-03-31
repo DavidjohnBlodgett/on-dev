@@ -105,7 +105,6 @@ The goal of this section is to provide a clear basic explination of each step ne
 > - base.trusty.3.19.0-56-generic.squashfs.img
 > - initrd.img-3.19.0-56-generic
 > - vmlinuz-3.19.0-56-generic
-
 > /home/vagrant/src/on-tftp/static/
 > - monorail.ipxe
 > - monorail-efi32-snponly.efi
