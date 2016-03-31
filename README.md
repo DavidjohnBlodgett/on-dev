@@ -84,7 +84,7 @@ The goal of this section is to provide a clear basic explination of each step ne
 
  - login to Github and copy the HTTPS URL from each of the repositories you have just forked, example URLs below.
  - From the on-dev directory, for each repository URL execute the following command
- ```
+```
     /<pathToYourWorkSpace>/on-dev/$ git clone <URLtoYourFork> 
 ```
 > - https://github.com/yourAccount/on-http
@@ -102,12 +102,12 @@ The goal of this section is to provide a clear basic explination of each step ne
 3.set up the upstream/master for each repository.
 
  - Navigate to the repository we wish to setup upstream, for this example we will do on-http.
- ```
- /on-dev/on-http/$ git remote add upstream https://github.com/RackHD/on-http 
+```
+    /on-dev/on-http/$ git remote add upstream https://github.com/RackHD/on-http 
 ```
  - Repeat the above step for each repository using the respective URL found in the list for step 1.
- ```
- /on-dev/<eachRepo>/$ git remote add upstream <RackHD_Repo_URL>
+```
+    /on-dev/<eachRepo>/$ git remote add upstream <RackHD_Repo_URL>
 ``` 
 The advantage of setting up this upstream relationship, from your local repositories to the RackHD repositories, will be explained later under Use Cases.
 
