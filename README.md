@@ -64,60 +64,60 @@ This being said, it is currently a manual process to place the expected monorail
 The goal of this section is to provide a clear basic explination of each step needed to set up your git repositories with a common workflow.
 
 1. git fork each repository.
-> on-http
-> on-core
-> on-taskgraph
-> on-tasks
-> on-tftp
-> on-dhcp-proxy
-> on-imagebuilder
-> on-statsd
-> on-syslog
-> on-tools
+> - on-http
+> - on-core
+> - on-taskgraph
+> - on-tasks
+> - on-tftp
+> - on-dhcp-proxy
+> - on-imagebuilder
+> - on-statsd
+> - on-syslog
+> - on-tools
 
 2. git clone each repository from your forks.
-> on-http
-> on-core
-> on-taskgraph
-> on-tasks
-> on-tftp
-> on-dhcp-proxy
-> on-imagebuilder
-> on-statsd
-> on-syslog
-> on-tools
+> - on-http
+> - on-core
+> - on-taskgraph
+> - on-tasks
+> - on-tftp
+> - on-dhcp-proxy
+> - on-imagebuilder
+> - on-statsd
+> - on-syslog
+> - on-tools
 
 3. set up the upstream/master for each repository.
-> on-http
-> on-core
-> on-taskgraph
-> on-tasks
-> on-tftp
-> on-dhcp-proxy
-> on-imagebuilder
-> on-statsd
-> on-syslog
-> on-tools
+> - on-http
+> - on-core
+> - on-taskgraph
+> - on-tasks
+> - on-tftp
+> - on-dhcp-proxy
+> - on-imagebuilder
+> - on-statsd
+> - on-syslog
+> - on-tools
 
 4. collect static files from bintray and place them into on-http & on-tftp (script this into ansible run, and have it placed onto VM)
 > /home/vagrant/src/on-http/static/http/common/
-> discovery.3.19.0-56-generic.overlay.cpio.gz
-> base.trusty.3.19.0-56-generic.squashfs.img
-> initrd.img-3.19.0-56-generic
-> vmlinuz-3.19.0-56-generic
+> - discovery.3.19.0-56-generic.overlay.cpio.gz
+> - base.trusty.3.19.0-56-generic.squashfs.img
+> - initrd.img-3.19.0-56-generic
+> - vmlinuz-3.19.0-56-generic
 
 > /home/vagrant/src/on-tftp/static/
-> monorail.ipxe
-> monorail-efi32-snponly.efi
-> monorail-efi64-snponly.efi
+> - monorail.ipxe
+> - monorail-efi32-snponly.efi
+> - monorail-efi64-snponly.efi
    
 5. Install dependicies (form VM, npm install in each repo)
-> on-http
-> on-taskgraph
-> on-tasks
-> on-tftp
-> on-dhcp-proxy
-> on-syslog
+> - on-http
+> - on-taskgraph
+> - on-tasks
+> - on-tftp
+> - on-dhcp-proxy
+> - on-syslog
 
 6. Use nodeforman to turn on monorail (from monorail server) /home/vagrant/.
 
