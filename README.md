@@ -68,7 +68,6 @@ The goal of this section is to provide a clear basic explination of each step ne
  - login to Github and click fork within each repository listed below
 
     https://github.com/RackHD
-
 > - https://github.com/RackHD/on-http
 > - https://github.com/RackHD/on-core
 > - https://github.com/RackHD/on-taskgraph
@@ -85,11 +84,9 @@ The goal of this section is to provide a clear basic explination of each step ne
 
  - login to Github and copy the HTTPS URL from each of the repositories you have just forked, example URLs below.
  - From the on-dev directory, for each repository URL execute the following command
-
  ```
     /<pathToYourWorkSpace>/on-dev/$ git clone <URLtoYourFork> 
 ```
-
 > - https://github.com/yourAccount/on-http
 > - https://github.com/yourAccount/on-core
 > - https://github.com/yourAccount/on-taskgraph
@@ -104,21 +101,17 @@ The goal of this section is to provide a clear basic explination of each step ne
 
 3.set up the upstream/master for each repository.
 
- 
-
-> - /yourAccount/on-http --upstream--> /RackHD/on-http
-> - /yourAccount/on-core --upstream--> /RackHD/on-core
-> - /yourAccount/on-taskgraph --upstream--> /RackHD/on-taskgraph
-> - /yourAccount/on-tasks --upstream--> /RackHD/on-tasks
-> - /yourAccount/on-tftp --upstream--> /RackHD/on-tftp
-> - /yourAccount/on-dhcp-proxy --upstream--> /RackHD/on-dhcp-proxy
-> - /yourAccount/on-imagebuilder --upstream--> /RackHD/on-imagebuilder
-> - /yourAccount/on-statsd --upstream--> /RackHD/on-statsd
-> - /yourAccount/on-syslog --upstream--> /RackHD/on-syslog
-> - /yourAccount/on-tools --upstream--> /RackHD/on-tools
+ - Navigate to the repository we wish to setup upstream, for this example we will do on-http.
+ ```
+ /on-dev/on-http/$ git remote add upstream https://github.com/RackHD/on-http 
+```
+ - Repeat the above step for each repository using the respective URL found in the list for step 1.
+ ```
+ /on-dev/<eachRepo>/$ git remote add upstream <RackHD_Repo_URL>
+``` 
+The advantage of setting up this upstream relationship, from your local repositories to the RackHD repositories, will be explained later under Use Cases.
 
 4.collect static files from bintray and place them into on-http & on-tftp (script this into ansible run, and have it placed onto VM)
-
 > /home/vagrant/src/on-http/static/http/common/
 > - discovery.3.19.0-56-generic.overlay.cpio.gz
 > - base.trusty.3.19.0-56-generic.squashfs.img
@@ -141,3 +134,6 @@ The goal of this section is to provide a clear basic explination of each step ne
 6.Use nodeforman to turn on monorail (from monorail server) /home/vagrant/.
 
     $ sudo nf start
+	
+## USE CASES
+1.stuff will go here...
