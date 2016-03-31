@@ -7,11 +7,12 @@ Currently this is a staging area for a WIP conversion of our example demo back i
 
 Install the latest Vagrant & Virtual Box programs onto your host.
 
-	[Vagrant](https://www.vagrantup.com/downloads.html)
-    [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
+	https://www.vagrantup.com/downloads.html
+    https://www.virtualbox.org/wiki/Downloads
 
 Git clone the on-dev repo onto your system.
 
+    $ cd /<pathToYourWorkSpace>/
     $ git clone https://github.com/DavidjohnBlodgett/on-dev.git
 
 Enter the build directory & /bin folder that holds the batch script (this will import into Virtual box a monorail server VM and some number of PXE clients).
@@ -29,22 +30,27 @@ see section below to change the number of PXE clients created at runtime.
 
 Install Vagrant & Virtual Box onto your host.
 
+	https://www.vagrantup.com/downloads.html
+    https://www.virtualbox.org/wiki/Downloads
 
 Clone RackHD repo to your local git directory.
 
-    $ git clone https://github.com/RackHD/RackHD
-    $ cd RackHD
+    $ cd /<pathToYourWorkSpace>/
+    $ git clone https://github.com/DavidjohnBlodgett/on-dev.git
 
 
-Change into the directory `example`, create config and run the setup command:
+Enter the build directory and create a new config.
 
-    $ cd example
+    $ cd on-dev/build/
     $ cp config/monorail_rack.cfg.example config/monorail_rack.cfg
 
+Enter the /bin folder that holds the batch script (this will import into Virtual box a monorail server VM and some number of PXE clients).
+
+    $ cd bin/
 
 Edits can be made to this new file to adjust the number of pxe clients created.
 
-    $ bin/monorail_rack
+    $ monorail_rack
 
 
 
@@ -58,24 +64,61 @@ This being said, it is currently a manual process to place the expected monorail
 The goal of this section is to provide a clear basic explination of each step needed to set up your git repositories with a common workflow.
 
 1. git fork each repository.
-..* on-http
-..* on-core
-..* on-taskgraph
-..* on-tasks
-..* on-tftp
-..* on-dhcp-proxy
-..* on-imagebuilder
-..* on-statsd
-..* on-syslog
-..* on-tools
+> on-http
+> on-core
+> on-taskgraph
+> on-tasks
+> on-tftp
+> on-dhcp-proxy
+> on-imagebuilder
+> on-statsd
+> on-syslog
+> on-tools
 
 2. git clone each repository from your forks.
+> on-http
+> on-core
+> on-taskgraph
+> on-tasks
+> on-tftp
+> on-dhcp-proxy
+> on-imagebuilder
+> on-statsd
+> on-syslog
+> on-tools
 
 3. set up the upstream/master for each repository.
+> on-http
+> on-core
+> on-taskgraph
+> on-tasks
+> on-tftp
+> on-dhcp-proxy
+> on-imagebuilder
+> on-statsd
+> on-syslog
+> on-tools
 
 4. collect static files from bintray and place them into on-http & on-tftp (script this into ansible run, and have it placed onto VM)
+> /home/vagrant/src/on-http/static/http/common/
+> discovery.3.19.0-56-generic.overlay.cpio.gz
+> base.trusty.3.19.0-56-generic.squashfs.img
+> initrd.img-3.19.0-56-generic
+> vmlinuz-3.19.0-56-generic
 
+> /home/vagrant/src/on-tftp/static/
+> monorail.ipxe
+> monorail-efi32-snponly.efi
+> monorail-efi64-snponly.efi
+   
 5. Install dependicies (form VM, npm install in each repo)
+> on-http
+> on-taskgraph
+> on-tasks
+> on-tftp
+> on-dhcp-proxy
+> on-syslog
 
-6. Use nodeforman to turn on monorail.
+6. Use nodeforman to turn on monorail (from monorail server) /home/vagrant/.
 
+    $ sudo nf start
