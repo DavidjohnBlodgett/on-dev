@@ -63,41 +63,59 @@ The monorail server currently will mount the on-dev directory found on your host
 This being said, it is currently a manual process to place the expected monorail repositories within on-dev so they will be reflected inside the VM.
 The goal of this section is to provide a clear basic explination of each step needed to set up your git repositories with a common workflow.
 
-1.git fork each repository.
-> - on-http
-> - on-core
-> - on-taskgraph
-> - on-tasks
-> - on-tftp
-> - on-dhcp-proxy
-> - on-imagebuilder
-> - on-statsd
-> - on-syslog
-> - on-tools
+1.git fork each repository to your Github account.
+
+- login to Github and click fork within each repository listed below
+
+    https://github.com/RackHD
+
+> - https://github.com/RackHD/on-http
+> - https://github.com/RackHD/on-core
+> - https://github.com/RackHD/on-taskgraph
+> - https://github.com/RackHD/on-tasks
+> - https://github.com/RackHD/on-tftp
+> - https://github.com/RackHD/on-dhcp-proxy
+> - https://github.com/RackHD/on-imagebuilder
+> - https://github.com/RackHD/on-statsd
+> - https://github.com/RackHD/on-syslog
+> - https://github.com/RackHD/on-tools
+
 
 2.git clone each repository from your forks.
-> - on-http
-> - on-core
-> - on-taskgraph
-> - on-tasks
-> - on-tftp
-> - on-dhcp-proxy
-> - on-imagebuilder
-> - on-statsd
-> - on-syslog
-> - on-tools
+
+- login to Github and copy the HTTPS URL from each of the repositories you have just forked, example paths below.
+- From the on-dev directory, for each repositories URL execute the following command
+
+```
+    /<pathToYourWorkSpace>/on-dev/$ git clone <URLtoYourFork> 
+```
+
+> - https://github.com/yourAccount/on-http
+> - https://github.com/yourAccount/on-core
+> - https://github.com/yourAccount/on-taskgraph
+> - https://github.com/yourAccount/on-tasks
+> - https://github.com/yourAccount/on-tftp
+> - https://github.com/yourAccount/on-dhcp-proxy
+> - https://github.com/yourAccount/on-imagebuilder
+> - https://github.com/yourAccount/on-statsd
+> - https://github.com/yourAccount/on-syslog
+> - https://github.com/yourAccount/on-tools
+
 
 3.set up the upstream/master for each repository.
-> - on-http
-> - on-core
-> - on-taskgraph
-> - on-tasks
-> - on-tftp
-> - on-dhcp-proxy
-> - on-imagebuilder
-> - on-statsd
-> - on-syslog
-> - on-tools
+
+ 
+
+> - /yourAccount/on-http --upstream--> /RackHD/on-http
+> - /yourAccount/on-core --upstream--> /RackHD/on-core
+> - /yourAccount/on-taskgraph --upstream--> /RackHD/on-taskgraph
+> - /yourAccount/on-tasks --upstream--> /RackHD/on-tasks
+> - /yourAccount/on-tftp --upstream--> /RackHD/on-tftp
+> - /yourAccount/on-dhcp-proxy --upstream--> /RackHD/on-dhcp-proxy
+> - /yourAccount/on-imagebuilder --upstream--> /RackHD/on-imagebuilder
+> - /yourAccount/on-statsd --upstream--> /RackHD/on-statsd
+> - /yourAccount/on-syslog --upstream--> /RackHD/on-syslog
+> - /yourAccount/on-tools --upstream--> /RackHD/on-tools
 
 4.collect static files from bintray and place them into on-http & on-tftp (script this into ansible run, and have it placed onto VM)
 
