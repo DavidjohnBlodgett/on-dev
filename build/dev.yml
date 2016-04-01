@@ -18,7 +18,7 @@
     #- ipmitool
     #- foreman
     #- remoterepos
-    #- images
+    - images
     #- swagger
     #- integrationtest
   #vars:
