@@ -26,7 +26,7 @@ Execute the monorail_rack setup.
 see section below to change the number of PXE clients created at runtime.
 
 
-## UBUNTU / LINUX SETUP
+## UBUNTU / LINUX / MAC SETUP
 
 Install Vagrant & Virtual Box onto your host.
 
@@ -63,7 +63,7 @@ The monorail server currently will mount the on-dev directory found on your host
 This being said, it is currently a manual process to place the expected monorail repositories within on-dev so they will be reflected inside the VM.
 The goal of this section is to provide a clear basic explination of each step needed to set up your git repositories with a common workflow.
 
-1.git fork each repository to your Github account.
+1.Git fork each repository to your Github account.
 
  - login to Github and click fork within each repository listed below
 
@@ -80,7 +80,7 @@ The goal of this section is to provide a clear basic explination of each step ne
 > - https://github.com/RackHD/on-tools
 
 
-2.git clone each repository from your forks.
+2.Git clone each repository from your forks.
 
  - login to Github and copy the HTTPS URL from each of the repositories you have just forked, example URLs below.
  - From the on-dev directory, for each repository URL execute the following command
@@ -99,7 +99,7 @@ The goal of this section is to provide a clear basic explination of each step ne
 > - https://github.com/yourAccount/on-tools
 
 
-3.set up the upstream/master for each repository.
+3.Set up the upstream/master for each repository.
 
  - Navigate to the repository we wish to setup upstream, for this example we will do on-http.
 ```
@@ -111,18 +111,24 @@ The goal of this section is to provide a clear basic explination of each step ne
 ``` 
 The advantage of setting up this upstream relationship, from your local repositories to the RackHD repositories, will be explained later under Use Cases.
 
-4.collect static files from bintray and place them into on-http & on-tftp (script this into ansible run, and have it placed onto VM)
-> /home/vagrant/src/on-http/static/http/common/
-> - discovery.3.19.0-56-generic.overlay.cpio.gz
-> - base.trusty.3.19.0-56-generic.squashfs.img
-> - initrd.img-3.19.0-56-generic
-> - vmlinuz-3.19.0-56-generic
+4.Copy static files from Monorail server to repective locations within on-http & on-tftp
+ - Ssh into the Monorail server
+```
+    /<pathToYourWorkSpace>/on-dev/build/bin/$ vagrant ssh dev
+```
+ - Make the common directory for on-http
+```
+    /home/vagrant/$ mkdir /home/vagrant/src/on-http/static/http/common/
+```
+ - Copy files to thier expected locations
+ ```
+     /home/vagrant/$ cp /home/vagrant/tmp/common/* /home/vagrant/src/on-http/static/http/common/
+ ```
+ 
+ ```
+     /home/vagrant/$ cp /home/vagrant/tmp/tftp/* /home/vagrant/src/on-tftp/static/tftp/
+ ```
 
-> /home/vagrant/src/on-tftp/static/
-> - monorail.ipxe
-> - monorail-efi32-snponly.efi
-> - monorail-efi64-snponly.efi
-   
 5.Install dependicies (form VM, npm install in each repo)
 > - on-http
 > - on-taskgraph
