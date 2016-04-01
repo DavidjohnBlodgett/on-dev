@@ -56,7 +56,7 @@ Edits can be made to this new file to adjust the number of pxe clients created.
 
 ## GIT FORK & GIT CLONE REPOSITORIES
 
-The monorail server currently will mount the on-dev directory found on your host to the /home/vagrant/src directory on the VM
+The monorail server currently will mount the on-dev directory found on your host to the /home/vagrant/src directory on the VM.
 
     /<pathToYourWorkSpace>/on-dev == /home/vagrant/src
 	
@@ -65,9 +65,8 @@ The goal of this section is to provide a clear basic explination of each step ne
 
 1.Git fork each repository to your Github account.
 
- - login to Github and click fork within each repository listed below
+ - login to Github and click fork within each repository listed below.
 
-    https://github.com/RackHD
 > - https://github.com/RackHD/on-http
 > - https://github.com/RackHD/on-core
 > - https://github.com/RackHD/on-taskgraph
@@ -83,10 +82,10 @@ The goal of this section is to provide a clear basic explination of each step ne
 2.Git clone each repository from your forks.
 
  - login to Github and copy the HTTPS URL from each of the repositories you have just forked, example URLs below.
- - From the on-dev directory, for each repository URL execute the following command
-```
-    /<pathToYourWorkSpace>/on-dev/$ git clone <URLtoYourFork> 
-```
+ - From the on-dev directory, for each repository URL execute the following command.
+ ```
+     /<pathToYourWorkSpace>/on-dev/$ git clone <URLtoYourFork> 
+ ```
 > - https://github.com/yourAccount/on-http
 > - https://github.com/yourAccount/on-core
 > - https://github.com/yourAccount/on-taskgraph
@@ -100,27 +99,26 @@ The goal of this section is to provide a clear basic explination of each step ne
 
 
 3.Set up the upstream/master for each repository.
-
  - Navigate to the repository we wish to setup upstream, for this example we will do on-http.
-```
-    /on-dev/on-http/$ git remote add upstream https://github.com/RackHD/on-http 
-```
+ ```
+     /on-dev/on-http/$ git remote add upstream https://github.com/RackHD/on-http 
+ ```
  - Repeat the above step for each repository using the respective URL found in the list for step 1.
-```
-    /on-dev/<eachRepo>/$ git remote add upstream <RackHD_Repo_URL>
-``` 
+ ```
+     /on-dev/<eachRepo>/$ git remote add upstream <RackHD_Repo_URL>
+ ``` 
 The advantage of setting up this upstream relationship, from your local repositories to the RackHD repositories, will be explained later under Use Cases.
 
 4.Copy static files from Monorail server to repective locations within on-http & on-tftp
- - Ssh into the Monorail server
-```
-    /<pathToYourWorkSpace>/on-dev/build/bin/$ vagrant ssh dev
-```
- - Make the common directory for on-http
-```
-    /home/vagrant/$ mkdir /home/vagrant/src/on-http/static/http/common/
-```
- - Copy files to thier expected locations
+ - Ssh into the Monorail server.
+ ```
+     /<pathToYourWorkSpace>/on-dev/build/bin/$ vagrant ssh dev
+ ```
+ - Make the common directory for on-http.
+ ```
+     /home/vagrant/$ mkdir /home/vagrant/src/on-http/static/http/common/
+ ```
+ - Copy files to thier expected locations.
  ```
      /home/vagrant/$ cp /home/vagrant/tmp/common/* /home/vagrant/src/on-http/static/http/common/
  ```
@@ -129,7 +127,16 @@ The advantage of setting up this upstream relationship, from your local reposito
      /home/vagrant/$ cp /home/vagrant/tmp/tftp/* /home/vagrant/src/on-tftp/static/tftp/
  ```
 
-5.Install dependicies (form VM, npm install in each repo)
+5.Install dependicies
+ - Ssh into the Monorail server.
+ ```
+     /<pathToYourWorkSpace>/on-dev/build/bin/$ vagrant ssh dev
+ ```
+ - For each repository found below, within the /home/vagrant/src directory on the Monorail server install the node dependicies (node_modules), below we install for on-http.
+ ```
+     /home/vagrant/src/on-http/$ npm install
+ ```
+
 > - on-http
 > - on-taskgraph
 > - on-tasks
@@ -139,7 +146,7 @@ The advantage of setting up this upstream relationship, from your local reposito
 
 6.Use nodeforman to turn on monorail (from monorail server) /home/vagrant/.
 
-    $ sudo nf start
+    /home/vagrant/$ sudo nf start
 	
 ## USE CASES
 1.stuff will go here...
