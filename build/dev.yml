@@ -4,7 +4,8 @@
   sudo: no
   roles:
     - tree
-    
+    - images
+
     # below are just a ref for what is done in packer...
     #- apt
     #- build
@@ -18,7 +19,7 @@
     #- ipmitool
     #- foreman
     #- remoterepos
-    - images
+
     #- swagger
     #- integrationtest
   #vars:

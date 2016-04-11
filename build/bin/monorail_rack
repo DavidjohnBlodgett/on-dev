@@ -40,10 +40,9 @@ done
 # DEPLOY MONORAIL SERVER #
 ##########################
 
-# TODO: handle if we want to download static files and/or BMCs
-#       For now assumed no downloading of dependicies...
-
+echo "**********************************"
 echo "I'll set up monorail server now..."
+echo "**********************************"
 vagrant up dev
 
 ######################
@@ -56,7 +55,9 @@ if [ $pxe_count ]
       do
         vmName="pxe-$i"
         if [[ ! -e $vmName.vdi ]]; then # check to see if PXE vm already exists
+            echo "*****************"
             echo "deploying pxe: $i"
+            echo "*****************"
             VBoxManage createvm --name $vmName --register;
             VBoxManage createhd --filename $vmName --size 8192;
             VBoxManage storagectl $vmName --name "SATA Controller" --add sata --controller IntelAHCI
@@ -67,7 +68,3 @@ if [ $pxe_count ]
         fi
       done
 fi
-
-echo "starting the services"
-echo "The RackHD documentation will be available shortly at http://localhost:9090/docs"
-vagrant ssh dev -c "sudo nf start"
