@@ -35,12 +35,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
            service isc-dhcp-server start
            service rsyslog stop
            echo manual | sudo tee /etc/init/rsyslog.override
-		       sudo apt-get -y install python-software-properties
+           sudo apt-get -y install python-software-properties
            sudo apt-add-repository ppa:ansible/ansible
            sudo apt-get -y update
            sudo apt-get -y install ansible
-		       # ansible-playbook -i "local," -c local rackhd_local.yml
-		       ansible-playbook -i "local," -c local /home/vagrant/src/build/dev.yml
+           # ansible-playbook -i "local," -c local rackhd_local.yml
+           ansible-playbook -i "local," -c local /home/vagrant/src/on-dev/build/dev.yml
         SHELL
     end
 
@@ -71,12 +71,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
            service isc-dhcp-server start
            service rsyslog stop
            echo manual | sudo tee /etc/init/rsyslog.override
-		       sudo apt-get -y install python-software-properties
-           sudo apt-add-repository ppa:ansible/ansible
-           sudo apt-get -y update
-           sudo apt-get -y install ansible
-		       # ansible-playbook -i "local," -c local rackhd_local.yml
-		       ansible-playbook -i "local," -c local /home/vagrant/src/build/dev.yml
+           # sudo apt-get -y install python-software-properties
+           # sudo apt-add-repository ppa:ansible/ansible
+           # sudo apt-get -y update
+           # sudo apt-get -y install ansible
+           # ansible-playbook -i "local," -c local rackhd_local.yml
+           # ansible-playbook -i "local," -c local /home/vagrant/src/build/dev.yml
         SHELL
     end
 end
