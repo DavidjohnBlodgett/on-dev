@@ -3,8 +3,8 @@ setlocal enabledelayedexpansion
 echo ************************************
 echo I'll set up monorail server now...
 echo ************************************
-vagrant up dev
-set pxe_count=4
+vagrant up dev_windows
+set pxe_count=1
 set vbox_manage=c:\Program Files\Oracle\VirtualBox
 set PATH=%PATH%;%vbox_manage%
 echo ************************************
@@ -27,9 +27,3 @@ set pxe_count=
 set vbox_manage=
 set vmName=
 set storName=
-
-
-::echo "starting the services"
-::echo "The RackHD documentation will be available shortly at http://localhost:9090/docs"
-::vagrant ssh dev -c "sudo nf start"
-

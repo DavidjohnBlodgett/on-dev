@@ -10,11 +10,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.define "dev" do |target|
         target.vm.box = "rackhd/rackhd"
         target.vm.provider "virtualbox" do |v|
-            v.memory = 4096
-            v.cpus = 4
+            #v.memory = 4096
+            v.memory = 2048
+            v.cpus = 1
             v.customize ["modifyvm", :id, "--nicpromisc2", "allow-all"]
-		target.vm.synced_folder "../", "/home/vagrant/src"
         end
+
+        target.vm.synced_folder "../../", "/home/vagrant/src"
 
         # Create a public network, which generally matched to bridged network.
         # Bridged networks make the machine appear as another physical device on
@@ -30,16 +32,51 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         target.ssh.forward_agent = true
 
         target.vm.provision "shell", inline: <<-SHELL
-          service isc-dhcp-server start
-          service rsyslog stop
-          echo manual | sudo tee /etc/init/rsyslog.override
-		  sudo apt-get -y install python-software-properties
-          sudo apt-add-repository ppa:ansible/ansible
-          sudo apt-get -y update
-          sudo apt-get -y install ansible
-		  # ansible-playbook -i "local," -c local rackhd_local.yml
-		  ansible-playbook -i "local," -c local /home/vagrant/src/build/dev.yml
+           service isc-dhcp-server start
+           service rsyslog stop
+           echo manual | sudo tee /etc/init/rsyslog.override
+		       sudo apt-get -y install python-software-properties
+           sudo apt-add-repository ppa:ansible/ansible
+           sudo apt-get -y update
+           sudo apt-get -y install ansible
+		       # ansible-playbook -i "local," -c local rackhd_local.yml
+		       ansible-playbook -i "local," -c local /home/vagrant/src/build/dev.yml
         SHELL
+    end
 
+    config.vm.define "dev_windows" do |target|
+        target.vm.box = "rackhd/rackhd"
+        target.vm.provider "virtualbox" do |v|
+            v.memory = 2048
+            v.cpus = 1
+            v.customize ["modifyvm", :id, "--nicpromisc2", "allow-all"]
+        end
+
+        #target.vm.synced_folder "../../", "/home/vagrant/src"
+
+        # Create a public network, which generally matched to bridged network.
+        # Bridged networks make the machine appear as another physical device on
+        # your network.
+        # target.vm.network :public_network
+
+        target.vm.network "private_network", ip: "172.31.128.1", virtualbox__intnet: "closednet"
+        target.vm.network "forwarded_port", guest: 8080, host: 9090
+        target.vm.network "forwarded_port", guest: 5672, host: 9091
+
+        # If true, then any SSH connections made will enable agent forwarding.
+        # Default value: false
+        target.ssh.forward_agent = true
+
+        target.vm.provision "shell", inline: <<-SHELL
+           service isc-dhcp-server start
+           service rsyslog stop
+           echo manual | sudo tee /etc/init/rsyslog.override
+		       sudo apt-get -y install python-software-properties
+           sudo apt-add-repository ppa:ansible/ansible
+           sudo apt-get -y update
+           sudo apt-get -y install ansible
+		       # ansible-playbook -i "local," -c local rackhd_local.yml
+		       ansible-playbook -i "local," -c local /home/vagrant/src/build/dev.yml
+        SHELL
     end
 end
