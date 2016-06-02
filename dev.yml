@@ -1,0 +1,7 @@
+---
+- name: Development Server
+  hosts: all
+  sudo: no
+  roles:
+    - tree
+    - images

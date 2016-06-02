@@ -4,9 +4,9 @@
   sudo: yes
 
 - name: Copy foreman .env file to home directory
-  copy: src=.env dest="{{ ansible_env.HOME }}"
+  copy: src=.env dest="/home/vagrant/"
   sudo: yes
 
 - name: Copy foreman Procfile to home directory
-  copy: src=Procfile dest="{{ ansible_env.HOME }}"
+  copy: src=Procfile dest="/home/vagrant/"
   sudo: yes
