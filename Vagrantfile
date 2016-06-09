@@ -57,6 +57,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         sudo apt-get -y update
         sudo apt-get -y install ansible
         ansible-playbook -i "local," -c local /home/vagrant/src/on-dev/dev.yml
+        # sudo npm install -g n
         SHELL
 
     end
