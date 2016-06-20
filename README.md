@@ -1,6 +1,16 @@
-## DOCUMENTATION
+## SUMMARY
 
-Currently this is a staging area for a WIP conversion of our example demo back into a development environment.
+This repository is a down-stream, personal test environment, I use for my contributions to the RackHD project.
+
+It leverages the Vagrant Virtual machine I delivered to this group. The original project is used for demonstrating the basic functionality of the RachHD bare-metal deployments
+by quickly orchestrating a simple RackHD management server and n number of PXE clients, complete with virtual networking under a VirtualBox environment.
+
+If you are interested in the RackHD project and would like to learn more, visit our github page here: https://github.com/RackHD/RackHD where you can find
+contact information and access to our slack community!
+
+This is freely available for anyone to use and I will be updating it as my needs change.
+
+## UPDATES
 
 __Warning:__ At this time windows does not support the ability to create a shared directory between the host and the Monorail server.
 We discovered issues when attempting dependency installation, there appears to be a known issue.
@@ -174,6 +184,3 @@ $ cp /home/vagrant/tmp/tftp/* /home/vagrant/src/on-tftp/static/tftp/
 ```
 /home/vagrant/$ sudo nf start
 ```
-
-## USE CASES
-1.stuff will go here...
