@@ -43,7 +43,7 @@ done
 echo "**********************************"
 echo "I'll set up monorail server now..."
 echo "**********************************"
-vagrant up dev
+#vagrant up dev
 
 ######################
 # DEPLOY PXE CLIENTS #

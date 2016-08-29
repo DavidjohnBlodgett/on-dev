@@ -21,11 +21,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         # can be configured as NFS mounts to the host instead.
         # To do so, append: `, type: "nfs"` to all of the target.vm.synced_folder commands
         # below, then on the host system, run `sudo nfsd start`.
-        # Additionally, uncomment the below configuration:
-
-        # For NFS mounts, a host only network is needed. Feel free to change the IP.
-        target.vm.network "private_network", ip: "192.168.50.4"
-
+        # Additionally, uncomment the below the other network configurations.
 
         # Create a public network, which generally matched to bridged network.
         # Bridged networks make the machine appear as another physical device on
@@ -44,6 +40,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         target.vm.network "forwarded_port", guest: 9080, host: 9092
         target.vm.network "forwarded_port", guest: 8443, host: 9093
 
+        # For NFS mounts, a host only network is needed. Feel free to change the IP.
+        target.vm.network "private_network", ip: "192.168.50.4"
+
         # If true, then any SSH connections made will enable agent forwarding.
         # Default value: false
         target.ssh.forward_agent = true
@@ -52,11 +51,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         service isc-dhcp-server start
         service rsyslog stop
         echo manual | sudo tee /etc/init/rsyslog.override
-        sudo apt-get -y install python-software-properties
-        sudo apt-add-repository ppa:ansible/ansible
-        sudo apt-get -y update
-        sudo apt-get -y install ansible
-        ansible-playbook -i "local," -c local /home/vagrant/src/on-dev/dev.yml
+        # sudo apt-get -y install python-software-properties
+        # sudo apt-add-repository ppa:ansible/ansible
+        # sudo apt-get -y update
+        # sudo apt-get -y install ansible
+        # ansible-playbook -i "local," -c local /home/vagrant/src/on-dev/dev.yml
         # sudo npm install -g n
         SHELL
 
