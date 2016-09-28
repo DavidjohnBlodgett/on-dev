@@ -39,6 +39,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         target.vm.network "forwarded_port", guest: 5672, host: 9091
         target.vm.network "forwarded_port", guest: 9080, host: 9092
         target.vm.network "forwarded_port", guest: 8443, host: 9093
+        config.vm.network "forwarded_port", guest: 3001, host: 3001 #node-inspector
+
 
         # For NFS mounts, a host only network is needed. Feel free to change the IP.
         target.vm.network "private_network", ip: "192.168.50.4"
