@@ -9,6 +9,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # RackHD SERVER
     config.vm.define "dev" do |target|
         target.vm.box = "rackhd/rackhd"
+        target.vm.box_version = "0.16"
         target.vm.provider "virtualbox" do |v|
             v.memory = 2048
             v.cpus = 1
